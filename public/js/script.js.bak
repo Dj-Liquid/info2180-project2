@@ -1,0 +1,32 @@
+function myFunction(propFilter) {
+
+    var input, fil, tab, tr, td, cell, i, j;
+    fil = propFilter;
+    tab = document.getElementById("example");
+    tr = tab.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none";
+        const tdArray = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < tdArray.length; j++) {
+            const cellValue = tdArray[j];
+            if (cellValue && cellValue.innerHTML.toLowerCase().indexOf(fil) > -1) {
+                tr[i].style.display = "";
+                break;
+            }
+        }
+    }
+}
+
+$('#all').on('click', function () {
+    myFunction('')
+});
+$('#sales').on('click', function () {
+    myFunction('sales lead')
+});
+$('#support').on('click', function () {
+    myFunction('support')
+});
+$('#assign').on('click', function () {
+    myFunction('assign')
+});
+
